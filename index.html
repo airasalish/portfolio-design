@@ -926,6 +926,11 @@
   .team .me::after { content: ''; position: absolute; left: 50%; top: 100%; transform: translateX(-50%); border: 4px solid transparent; border-top-color: var(--bg); }
   .team figcaption { margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
   .team { max-width: 760px; }
+
+  .job .team { margin-top: 18px; max-width: 560px; }
+  .job .team .me { top: 9%; }
+  .job .lg:not(.acm):not(:has(img)) { font-family: var(--serif); font-size: 24px; }
+  @media (max-width: 600px) { .chips a:nth-child(n+4) { display: none; } }
 </style>
 </head>
 <body>
@@ -1057,7 +1062,7 @@
     </div>
     <div class="gen-side">
       <h3>Realistic AI images, on a budget</h3>
-      <p>At The Spotted App I helped the founder and his PM produce sample images that looked real rather than "AI", and found a way to make them at a very low cost per image.</p>
+      <p>At The Spotted App I made sample images for the founder and his PM that looked real rather than "AI", and found a way to produce them for very little per image.</p>
     </div>
   </section>
 
@@ -1071,11 +1076,17 @@
             <div><h3>Prompt Engineering &amp; Automation Intern</h3><div class="co">BabyBillion <span>· Bengaluru</span></div></div>
             <span class="pill">May – Sept 2025</span>
           </div>
-          <p class="one">Generative video end to end, plus Python and n8n automation. <b>40% less repetitive work across 50+ workflows.</b></p>
+          <p class="one">Made the AI shorts end to end, and automated the repetitive parts with Python and n8n. <b>111M+ views; 40% less repetitive work across 50+ workflows.</b></p>
           <div class="actions">
             <button class="btn sm" data-open="img/babybillion.jpg" data-cap="BabyBillion experience letter" data-pdf="docs/babybillion-experience-letter.pdf">Experience letter</button>
-            <button class="btn sm" data-open="img/bb-team-me.jpg" data-cap="With the BabyBillion team at the Bengaluru office (I'm on the far left, in the white cardigan)">Team photo</button>
           </div>
+          <figure class="team">
+            <button class="team-btn" data-open="img/bb-team-me.jpg" data-cap="With the BabyBillion team, Bengaluru, 2025 (far left, white cardigan)">
+              <img src="img/bb-team-me.jpg" alt="Aira with the BabyBillion team in Bengaluru" loading="lazy">
+              <span class="me">me</span>
+            </button>
+            <figcaption>With the BabyBillion team, Bengaluru, 2025</figcaption>
+          </figure>
         </div>
       </article>
       <article class="job">
@@ -1099,13 +1110,6 @@
         </div>
       </article>
     </div>
-    <figure class="team">
-      <button class="team-btn" data-open="img/bb-team-me.jpg" data-cap="With the BabyBillion team, Bengaluru, 2025 (far left, white cardigan)">
-        <img src="img/bb-team-me.jpg" alt="Aira with the BabyBillion team in Bengaluru" loading="lazy">
-        <span class="me">me</span>
-      </button>
-      <figcaption>With the BabyBillion team, Bengaluru, 2025</figcaption>
-    </figure>
   </section>
 
   <section class="block" id="projects">
@@ -1121,7 +1125,7 @@
           <h3>THROUGHLINE</h3>
           <p>AI image tools break a design language on every output. THROUGHLINE turns reference images and written rules (proportion, stance, form, CMF) into a spec that goes into every generation, then flags which rule a concept broke.</p>
           <p class="stack">Python · FastAPI · generative image APIs</p>
-          <div class="foot"><span class="metric">Early build: I'd rather show what it fails at than call it finished</span></div>
+          <div class="foot"><span class="metric">Early build, shared honestly: what works and what still fails</span></div>
         </div>
       </article>
       <article class="proj" id="p-drift">
@@ -1157,9 +1161,9 @@
         <div class="body">
           <span class="eyebrow">Open source · 2024</span>
           <h3>CampusWeb</h3>
-          <p>Shipped features into someone else's codebase, under peer review, for a live SRM app. Plus Log-Seismo, a log-monitoring tool deployed on AWS.</p>
-          <p class="stack">Web app · code review · AWS</p>
-          <div class="foot"><span class="metric"><b>1,000+</b> daily users</span><span class="links"><a class="btn sm" href="https://github.com/gershomrichardbruno/Log-Seismo" target="_blank" rel="noopener">Log-Seismo code</a></span></div>
+          <p>Shipped features into a live SRM student app, working in someone else's codebase under peer review and the maintainers' guidance.</p>
+          <p class="stack">Web app · open source · code review</p>
+          <div class="foot"><span class="metric"><b>1,000+</b> daily users</span><span class="links"></span></div>
         </div>
       </article>
     </div>
