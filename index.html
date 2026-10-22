@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316161a'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='20' text-anchor='middle' fill='%23f7f6f3'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f7f6f3; --surface: #ffffff; --ink: #16161a; --text: #3d3d45; --muted: #75757f;
@@ -838,101 +838,59 @@
   .tl-grid span { font-family: var(--mono); font-size: 11px; color: #d39a8a; border: 1px solid #45433e; padding: 4px 10px; }
   @media (max-width: 860px) { .gen { grid-template-columns: 1fr; } .fit-row { grid-template-columns: 1fr; gap: 4px; } }
 
-  /* ================= SPIDER-VERSE THEME ================= */
-  :root, :root:not([data-theme="light"]) {
-    --bg: #0b0910; --surface: #13101b; --ink: #f6f1ea; --text: #d9d2e6; --muted: #9a8fb0;
-    --line: #2c2440; --line-strong: #4a3d68; --accent: #ff1f4b; --accent-soft: rgba(255,31,75,.12);
-    --cyan: #19e3ff; --violet: #8b3dff; --yellow: #ffd60a;
-    --serif: 'Anton', Impact, sans-serif; --sans: 'Space Grotesk', system-ui, sans-serif; --marker: 'Permanent Marker', cursive;
-  }
-  @media (prefers-color-scheme: dark) { :root { --bg: #0b0910; --surface: #13101b; --ink: #f6f1ea; --text: #d9d2e6; --muted: #9a8fb0; --line: #2c2440; --line-strong: #4a3d68; --accent: #ff1f4b; } }
-  body { background: var(--bg); color: var(--text); font-family: var(--sans);
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(139,61,255,.22) 1.2px, transparent 1.6px),
-      radial-gradient(1200px 700px at 85% -10%, rgba(255,31,75,.20), transparent 60%),
-      radial-gradient(900px 600px at -10% 40%, rgba(139,61,255,.18), transparent 60%);
-    background-size: 14px 14px, auto, auto; background-attachment: fixed; }
-  ::selection { background: var(--accent); color: #fff; }
+  /* ===== Spider-Verse moment: only while the pointer is on the portrait ===== */
+  .verse { position: relative; --red: #ff1f4b; --cyan: #19e3ff; --violet: #8b3dff; --yel: #ffd60a; }
+  .verse .frame { position: relative; overflow: hidden; border-radius: 2px; transition: box-shadow .25s steps(3), transform .25s steps(3); }
+  .verse .frame img { display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; object-position: 50% 30%; border-radius: 0 !important; filter: none !important; }
+  .verse .comic { position: absolute; inset: 0; height: 100% !important; opacity: 0; }
+  .verse .c-m { mix-blend-mode: normal; }
+  .verse .c-c { mix-blend-mode: screen; filter: hue-rotate(160deg) saturate(1.4) !important; }
+  .verse .c-k { mix-blend-mode: multiply; filter: hue-rotate(-30deg) !important; }
+  .verse .dots { position: absolute; inset: 0; opacity: 0; pointer-events: none; mix-blend-mode: multiply;
+    background-image: radial-gradient(circle, rgba(139,61,255,.55) 1.2px, transparent 1.7px); background-size: 7px 7px; }
+  .verse .scan { position: absolute; inset: 0; opacity: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px); }
+  .verse .bars i { position: absolute; left: 0; right: 0; height: 9%; opacity: 0; background: inherit; mix-blend-mode: difference; }
+  .verse .bars i:nth-child(1) { top: 22%; background: var(--cyan); }
+  .verse .bars i:nth-child(2) { top: 51%; background: var(--red); height: 5%; }
+  .verse .bars i:nth-child(3) { top: 74%; background: var(--yel); height: 3%; }
+  .verse .splat { position: absolute; width: 78%; left: -16%; top: -14%; z-index: -1; fill: var(--red); opacity: 0; transform: scale(.6) rotate(-20deg); transition: opacity .2s, transform .35s cubic-bezier(.3,1.6,.5,1); }
+  .verse .bubble, .verse .sfx, .verse .tag { position: absolute; z-index: 4; opacity: 0; pointer-events: none; transition: opacity .15s, transform .3s cubic-bezier(.3,1.7,.5,1); }
+  .verse .bubble { top: 7%; left: -22%; font-family: 'Permanent Marker', cursive; font-size: 19px; color: #0b0910; background: #fff; border: 3px solid #0b0910; border-radius: 22px; padding: 8px 16px; transform: scale(.4) rotate(-6deg); }
+  .verse .bubble::after { content: ''; position: absolute; right: 18px; bottom: -14px; border: 9px solid transparent; border-top: 12px solid #0b0910; border-left-color: #0b0910; }
+  .verse .sfx { right: -14px; bottom: 16%; font-family: 'Anton', Impact, sans-serif; font-size: 52px; color: var(--yel); -webkit-text-stroke: 3px #0b0910; paint-order: stroke fill; text-shadow: 5px 5px 0 var(--red); transform: scale(.3) rotate(10deg); }
+  .verse .tag { left: 10px; bottom: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: #fff; background: #0b0910; padding: 4px 8px; border-left: 4px solid var(--red); transform: translateY(8px); }
 
-  /* type */
-  h1, h2, h3, .head h2, .proj h3, .job h3, .round h3, .cert h3, .contact h2, .stats b, .gen h3, .gen-side h3, .range h3 { font-family: var(--serif); font-weight: 400; letter-spacing: .01em; text-transform: uppercase; }
-  .hero h1 { font-size: clamp(64px, 9.5vw, 128px); line-height: .9; color: var(--ink); text-shadow: 4px 0 0 var(--accent), -4px 0 0 var(--cyan); animation: misprint 3.2s steps(1) infinite; }
-  .hero h1 em { font-style: normal; color: var(--yellow); text-shadow: none; }
-  @keyframes misprint { 0%,92%,100% { text-shadow: 4px 0 0 var(--accent), -4px 0 0 var(--cyan); transform: none; }
-    93% { text-shadow: -6px 2px 0 var(--accent), 6px -2px 0 var(--cyan); transform: translateX(2px); }
-    95% { text-shadow: 7px -1px 0 var(--accent), -7px 1px 0 var(--cyan); transform: translateX(-3px) skewX(-2deg); } }
-  .hero .role { font-family: var(--marker); text-transform: none; font-size: clamp(26px, 3vw, 40px); color: var(--ink); transform: rotate(-1.5deg); display: inline-block; }
-  .hero .role em { font-style: normal; color: var(--accent); }
-  .avail { color: var(--cyan); }
-  .head h2 { font-size: clamp(40px, 5.4vw, 72px); line-height: .95; color: var(--ink); }
-  .head { border-top: 3px solid var(--ink); }
+  .verse.on .comic { opacity: 1; }
+  .verse.on .c-c { opacity: .35; transform: translate(-5px, 2px); animation: plateC 1.6s steps(1) infinite; }
+  .verse.on .c-k { opacity: .3; transform: translate(4px, -2px); animation: plateK 1.9s steps(1) infinite; }
+  .verse.on .dots { opacity: .55; }
+  .verse.on .scan { opacity: 1; }
+  .verse.on .frame { box-shadow: 8px 8px 0 var(--red), -6px -6px 0 var(--cyan), 14px 14px 0 var(--violet); transform: rotate(-.6deg); }
+  .verse.on .splat { opacity: .9; transform: scale(1) rotate(0); }
+  .verse.on .bubble { opacity: 1; transform: scale(1) rotate(-6deg); }
+  .verse.on .sfx { opacity: 1; transform: scale(1) rotate(10deg); transition-delay: .08s; }
+  .verse.on .tag { opacity: 1; transform: none; }
+  .verse.hit .frame { animation: vshake .45s steps(6); }
+  .verse.hit .c-m { animation: vslice .45s steps(6); }
+  .verse.hit .bars i { animation: vbars .45s steps(5); }
+  @keyframes plateC { 0%,100% { transform: translate(-5px,2px); } 50% { transform: translate(-7px,-1px); } }
+  @keyframes plateK { 0%,100% { transform: translate(4px,-2px); } 50% { transform: translate(6px,1px); } }
+  @keyframes vshake { 0%{transform:none} 20%{transform:translate(-7px,3px) skewX(4deg)} 40%{transform:translate(6px,-3px)} 60%{transform:translate(-4px,1px) skewX(-3deg)} 80%{transform:translate(3px,0)} 100%{transform:rotate(-.6deg)} }
+  @keyframes vslice { 0%{clip-path:inset(0)} 20%{clip-path:inset(18% 0 58% 0)} 40%{clip-path:inset(62% 0 8% 0)} 60%{clip-path:inset(4% 0 72% 0)} 80%{clip-path:inset(40% 0 30% 0)} 100%{clip-path:inset(0)} }
+  @keyframes vbars { 0%{opacity:1; transform:translateX(-20%)} 40%{opacity:1; transform:translateX(15%)} 80%{opacity:.6; transform:translateX(-8%)} 100%{opacity:0} }
 
-  /* caption boxes, comic style */
-  .kicker { display: inline-block; background: var(--yellow); color: #0b0910 !important; font-family: var(--mono); font-weight: 600; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; transform: skewX(-8deg); box-shadow: 3px 3px 0 #0b0910, 3px 3px 0 1px var(--accent); }
-  .kicker::before { color: #0b0910 !important; }
-
-  /* buttons: hard comic shadows */
-  .btn, .btn.sm, .c-mini, .chips a, .skill-row span { border: 2px solid var(--ink) !important; border-radius: 0 !important; color: var(--ink); background: transparent; font-family: var(--sans); font-weight: 700; box-shadow: 4px 4px 0 var(--violet) !important; transition: transform .12s steps(2), box-shadow .12s steps(2); }
-  .btn:hover, .c-mini:hover, .chips a:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--accent) !important; }
-  .btn.primary { background: var(--accent); border-color: var(--accent) !important; color: #fff; box-shadow: 4px 4px 0 var(--cyan) !important; }
-  .btn.primary:hover { box-shadow: 6px 6px 0 var(--yellow) !important; }
-  .text-links a { color: var(--ink); text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
-
-  /* panels */
-  .proj, .job, .round, .what, .range, .contact, .fit, .gen-media, .flip, .more-gh, .certs.tiles .cert { border-radius: 0 !important; }
-  .proj { background: var(--surface); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--accent); padding: 0; transition: transform .15s steps(3), box-shadow .15s steps(3); }
-  .proj:nth-child(even) { box-shadow: 8px 8px 0 var(--violet); }
-  .proj:hover { transform: translate(-3px,-3px) rotate(-.4deg) !important; box-shadow: 12px 12px 0 var(--cyan) !important; border-top-color: var(--ink); }
-  .proj .body { padding: 18px 20px 20px; }
-  .proj .shot { border-bottom: 2px solid var(--ink); }
-  .projects { gap: 28px; }
-  .eyebrow { color: var(--cyan) !important; }
-  .stats { border-top: 3px solid var(--ink); }
-  .stats b { color: var(--ink); text-shadow: 3px 3px 0 var(--accent); font-size: clamp(48px, 6vw, 76px); }
-  .stats a:hover b { color: var(--yellow); }
-  .fit-row .ask { color: var(--yellow); font-weight: 600; }
-  .tldr b.hl, .metric b, .proj .metric b { color: var(--accent) !important; }
-  .certs.tiles .cert { background: transparent; }
-  .certs.tiles .cert:hover h3 { color: var(--yellow); }
-  .ctype { color: var(--cyan); }
-  .contact { background: var(--accent) !important; color: #fff; border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--violet); background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,.25) 1.4px, transparent 1.8px) !important; background-size: 10px 10px !important; }
-  .contact h2 { color: #fff; font-size: clamp(56px, 7vw, 96px); text-shadow: 4px 4px 0 #0b0910; }
-  .contact p { color: #fff; }
-  .contact .c-mini { color: #fff; border-color: #fff !important; box-shadow: 3px 3px 0 #0b0910 !important; }
-  .contact .list button, .contact .list .c-dl { background: #0b0910; color: #fff; border: 2px solid #fff; border-radius: 0; }
-  .tl-shot { background: #0b0910; background-image: radial-gradient(circle at 1px 1px, rgba(255,31,75,.4) 1.3px, transparent 1.7px); background-size: 10px 10px; }
-  .tl-grid span { color: var(--yellow); border-color: var(--accent); }
-  .rail a.active { color: var(--yellow); }
-  .rail a.active::before { color: var(--accent) !important; }
-  .progress { background: linear-gradient(90deg, var(--accent), var(--violet), var(--cyan)); height: 3px; }
-  header.top { background: rgba(11,9,16,.86); }
-  .brand { font-family: var(--serif); text-transform: uppercase; letter-spacing: .04em; font-size: 20px; }
-
-  /* comic glimpse portrait */
-  .flip { position: relative; overflow: hidden; border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--accent), 16px 16px 0 var(--violet); background: #000; }
-  .flip img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 0 !important; }
-  .flip .comic { position: absolute; inset: 0; height: 100%; opacity: 1; transition: opacity .05s steps(1); }
-  .flip.real-on .comic { opacity: 0; }
-  .flip.glitch { animation: jitter .42s steps(6); }
-  .flip.glitch .comic { animation: slice .42s steps(6); }
-  @keyframes jitter { 0% { transform: translate(0,0); } 20% { transform: translate(-6px,2px); } 40% { transform: translate(5px,-3px) skewX(3deg); } 60% { transform: translate(-3px,1px); } 80% { transform: translate(4px,0) skewX(-2deg); } 100% { transform: none; } }
-  @keyframes slice { 0% { clip-path: inset(0 0 0 0); } 20% { clip-path: inset(20% 0 55% 0); } 40% { clip-path: inset(60% 0 10% 0); } 60% { clip-path: inset(5% 0 70% 0); } 80% { clip-path: inset(40% 0 30% 0); } 100% { clip-path: inset(0 0 0 0); } }
-  .pow { position: absolute; top: 14px; right: 14px; z-index: 3; font-family: var(--serif); font-size: 34px; color: #0b0910; background: var(--yellow); padding: 4px 14px; transform: rotate(8deg); border: 3px solid #0b0910; box-shadow: 4px 4px 0 var(--accent); transition: opacity .2s; }
-  .flip.real-on .pow { opacity: 0; }
-  .flip:hover .pow, .flip.comic-on .pow { opacity: 1; }
-  .hover-hint { font-family: var(--marker); color: var(--yellow); font-size: 15px; margin-top: 16px; transform: rotate(-2deg); }
-  .portrait .caption a { color: var(--muted); }
-  @media (prefers-reduced-motion: reduce) { .hero h1, .flip.glitch, .flip.glitch .comic { animation: none !important; } }
-
-  .hero { align-items: center !important; }
-  .portrait { max-width: 380px !important; width: 100%; justify-self: end; }
-  .flip img { height: auto !important; max-height: none; }
-  .flip .comic { height: 100% !important; }
-  .contact .list em { color: rgba(255,255,255,.7) !important; }
-  .contact .list small { color: #fff; }
-  .range { border: 2px solid var(--line-strong); }
-  .scorecard span { border-radius: 0; border-color: var(--line-strong); }
-  @media (max-width: 980px) { .portrait { justify-self: stretch; max-width: none !important; } }
+  /* the rest of the page joins in, subtly, while the comic is showing */
+  body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .35s;
+    background: radial-gradient(circle at 1px 1px, rgba(139,61,255,.22) 1.2px, transparent 1.6px) 0 0 / 14px 14px,
+                radial-gradient(900px 600px at 80% 10%, rgba(255,31,75,.16), transparent 60%),
+                radial-gradient(800px 600px at 10% 60%, rgba(25,227,255,.10), transparent 60%); }
+  body.verse-on::before { opacity: 1; }
+  body.verse-on .hero h1 { text-shadow: 3px 0 0 #ff1f4b, -3px 0 0 #19e3ff; transition: text-shadow .1s steps(2); }
+  body.verse-on .hero .role em { color: #ff1f4b; }
+  .gen-media video { width: 100%; height: 100%; display: block; background: #0b0910; }
+  @media (prefers-reduced-motion: reduce) { .verse.on .c-c, .verse.on .c-k, .verse.hit .frame, .verse.hit .c-m, .verse.hit .bars i { animation: none !important; } }
+  @media (max-width: 980px) { .verse .bubble { left: 8px; } .verse .sfx { right: 8px; } }
 </style>
 </head>
 <body>
@@ -987,19 +945,28 @@
       <p class="skim">30-second skim below ↓</p>
     </div>
     <div class="portrait">
-      <div class="flip" id="flip">
-        <img class="real" src="img/aira.jpg?v=6" alt="Portrait of Aira K. Salish" width="800" height="1000">
-        <img class="comic" src="img/aira-comic.jpg" alt="" aria-hidden="true" width="800" height="1000">
-        <span class="pow" aria-hidden="true">HI!</span>
+      <div class="verse" id="verse">
+        <svg class="splat" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 18c10 22 30 6 38 24s28 6 26 30-22 22-8 40 10 34-14 34-18 24-40 16-30 14-38-8-34-10-26-32 4-26-8-46-24-22-2-40 26 4 36-14 20-30 32-14z"/><circle cx="174" cy="40" r="7"/><circle cx="22" cy="150" r="9"/><circle cx="186" cy="150" r="4"/><circle cx="36" cy="30" r="4"/></svg>
+        <div class="frame">
+          <img class="real" src="img/aira.jpg?v=6" alt="Portrait of Aira K. Salish" width="800" height="1000">
+          <img class="comic c-m" src="img/aira-comic.jpg?v=2" alt="" aria-hidden="true">
+          <img class="comic c-c" src="img/aira-comic.jpg?v=2" alt="" aria-hidden="true">
+          <img class="comic c-k" src="img/aira-comic.jpg?v=2" alt="" aria-hidden="true">
+          <span class="dots" aria-hidden="true"></span>
+          <span class="scan" aria-hidden="true"></span>
+          <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <span class="bubble" aria-hidden="true">hey, it's me!</span>
+        <span class="sfx" aria-hidden="true">POP!</span>
+        <span class="tag" aria-hidden="true">EARTH-2027</span>
       </div>
-      <p class="hover-hint">Hover for the comic-book me</p>
       <p class="caption"><a href="#certifications">AWS Certified AI Practitioner</a><a href="#certifications">Red Hat RH294 · SAP Certified</a></p>
     </div>
   </section>
 
   <section class="receipts" id="abc" aria-label="Highlights">
     <div class="stats" id="stats">
-      <a href="#generative"><b data-to="21" data-suffix="M">21M</b><span>views on one AI-made short</span></a>
+      <a href="#generative"><b data-to="111" data-suffix="M+">111M+</b><span>views across 26 AI-made shorts</span></a>
       <a href="#friction"><b data-to="40" data-suffix="%">40%</b><span>of a team's repetitive work, automated</span></a>
       <a href="#friction"><b data-to="50" data-suffix="+">50+</b><span>production workflows automated</span></a>
       <a href="#projects"><b data-to="1000" data-suffix="+">1000+</b><span>daily users on an app I shipped to</span></a>
@@ -1034,19 +1001,18 @@
   </section>
 
   <section class="block" id="generative">
-    <div class="head"><div><span class="kicker">Generative work</span><h2>2D sketch → 3D character → 21M views</h2></div><p>The hard part of generative work is keeping a look consistent. Same problem as a design language.</p></div>
+    <div class="head"><div><span class="kicker">Generative work</span><h2>2D sketch → 3D character → 111M views</h2></div><p>The hard part of generative work is keeping a look consistent. Same problem as a design language.</p></div>
     <div class="gen">
       <div class="gen-text">
         <h3>BabyBillion · kids' content, 1.5B+ monthly views</h3>
         <ul class="tldr">
           <li><b>The brief:</b> turn an illustrator's 2D character into a 3D character that works across a whole series.</li>
           <li><b>What I built:</b> a prompt system that held the character, scenes and style steady from one short to the next.</li>
-          <li><b>Result:</b> shorts at <b class="hl">21M</b> and <b class="hl">20M</b> views on YouTube Shorts, and one at 1.2M on the strength of its thumbnail.</li>
+          <li><b>Result:</b> <b class="hl">111M+</b> views across 26 shorts. Top three at <b class="hl">25M</b>, <b class="hl">21M</b> and <b class="hl">20M</b>.</li>
         </ul>
       </div>
       <div class="gen-media" id="genMedia">
-        <img src="img/bb-team.jpg" alt="The BabyBillion team" loading="lazy">
-        <span class="gen-tag">Walkthrough video coming soon</span>
+        <video src="vid/bb-reel.mp4" poster="img/bb-reel-poster.jpg" muted playsinline loop controls preload="metadata"></video>
       </div>
     </div>
     <div class="gen-side">
@@ -1698,17 +1664,15 @@ document.getElementById('shootBtn').addEventListener('click', () => shoot((Math.
   const f = () => { const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`; };
   addEventListener('scroll', f, { passive: true }); f(); })();
 
-/* comic glimpse: start illustrated, glitch to the real photo, flash back on hover */
+/* Spider-Verse moment on the portrait */
 (() => {
-  const f = document.getElementById('flip'); if (!f) return;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const glitch = () => { if (reduce) return; f.classList.remove('glitch'); void f.offsetWidth; f.classList.add('glitch'); };
-  const toReal = () => { glitch(); setTimeout(() => { f.classList.add('real-on'); f.classList.remove('comic-on'); }, 210); };
-  const toComic = () => { glitch(); setTimeout(() => { f.classList.remove('real-on'); f.classList.add('comic-on'); }, 120); };
-  setTimeout(toReal, reduce ? 0 : 1800);
-  f.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') toComic(); });
-  f.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') toReal(); });
-  f.addEventListener('click', () => f.classList.contains('real-on') ? toComic() : toReal());
+  const v = document.getElementById('verse'); if (!v) return;
+  const hit = () => { v.classList.remove('hit'); void v.offsetWidth; v.classList.add('hit'); };
+  const on = () => { v.classList.add('on'); document.body.classList.add('verse-on'); hit(); };
+  const off = () => { hit(); setTimeout(() => { v.classList.remove('on'); document.body.classList.remove('verse-on'); }, 160); };
+  v.addEventListener('pointerenter', e => { if (e.pointerType !== 'touch') on(); });
+  v.addEventListener('pointerleave', e => { if (e.pointerType !== 'touch') off(); });
+  v.addEventListener('click', () => v.classList.contains('on') ? off() : on());
 })();
 </script>
 </body>
