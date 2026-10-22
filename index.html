@@ -959,6 +959,19 @@
   #p-receipts .shot img { object-fit: cover; object-position: center; }
   .also { margin-top: 22px; font-size: 15.5px; color: var(--text); }
   .also b { color: var(--ink); }
+
+  .proj p.next { font-size: 14px; color: var(--muted); margin-top: 8px; padding-left: 12px; border-left: 2px solid var(--line-strong); }
+  .focus { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+  .tier { padding: 22px 24px 8px 0; }
+  .tier + .tier { border-left: 1px solid var(--line); padding-left: 24px; }
+  .tier h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+  .tier ul { list-style: none; margin-top: 12px; display: grid; gap: 10px; }
+  .tier li { font-size: 15px; line-height: 1.5; padding-left: 14px; position: relative; color: var(--text); }
+  .tier li::before { content: ''; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--line-strong); }
+  .tier:first-child li::before { background: var(--accent); }
+  .tier li b { color: var(--ink); font-weight: 700; }
+  .tier-note { margin-top: 12px; font-size: 13px; color: var(--muted); }
+  @media (max-width: 860px) { .focus { grid-template-columns: 1fr; } .tier + .tier { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); } }
 </style>
 </head>
 <body>
@@ -993,6 +1006,7 @@
   <a href="#generative">Generative</a>
   <a href="#friction">Work</a>
   <a href="#projects">Tools</a>
+  <a href="#focus">Focus</a>
   <a href="#certifications">Certificates</a>
   <a href="#beyond">Archery</a>
   <a href="#contact">Contact</a>
@@ -1057,7 +1071,7 @@
       </article>
       <article class="step">
         <span class="n">02</span><h3>Test the tools</h3>
-        <p>I try the new AI tools, then test them against real use, not demos. Graded test sets, failure cases, a clear bar to pass.</p>
+        <p>I try the new AI tools, then test them against real use, not demos: graded test sets, failure cases, a clear bar to pass. That includes vision models reading real photos and posters.</p>
         <span class="proof">→ 35% fewer wrong answers</span>
       </article>
       <article class="step">
@@ -1152,7 +1166,8 @@
           <span class="eyebrow">Early build · 2026</span>
           <h3>THROUGHLINE</h3>
           <p>AI image tools break a design language on every output. THROUGHLINE turns reference images and written rules (proportion, stance, form, CMF) into a spec that goes into every generation, then flags which rule a concept broke.</p>
-          <p class="stack">Python · FastAPI · generative image APIs</p>
+          <p class="stack">Python · FastAPI · image-generation APIs · not public yet</p>
+          <p class="next">Next: score each concept against the spec with CLIP image embeddings, instead of relying on prompts alone.</p>
           <div class="foot"><span class="metric">Early build, shared honestly: what works and what still fails</span></div>
         </div>
       </article>
@@ -1165,7 +1180,7 @@
           <span class="eyebrow">SerpApi India Hackathon · 2026</span>
           <h3>Receipts</h3>
           <p>Finance YouTubers tell millions which stocks to buy, and nobody keeps score. Receipts finds each tip at the exact second it was said, then checks how the stock really did.</p>
-          <p class="stack">SerpApi · YouTube transcripts · Google Finance</p>
+          <p class="stack">Python · FastAPI · six SerpApi engines · React + TypeScript · pytest in GitHub Actions</p>
           <div class="foot"><span class="metric"><b>42</b> tips audited · live</span><span class="links"><button class="btn sm primary" data-play="yt" data-yt="feeWyb4Sn9A" data-title="Receipts, SerpApi India Hackathon 2026">▶ Demo</button><a class="btn sm" href="https://receipts-india.vercel.app/receipts" target="_blank" rel="noopener">Live</a><a class="btn sm" href="https://github.com/airasalish/receipts" target="_blank" rel="noopener">Code</a></span></div>
         </div>
       </article>
@@ -1179,7 +1194,7 @@
           <span class="eyebrow">Code, by Groww · 2026</span>
           <h3>DRIFT</h3>
           <p>A full-stack app, deployed so anyone can open it. Tells investors what changed since they last looked, with every signal explained.</p>
-          <p class="stack">FastAPI · PostgreSQL · React</p>
+          <p class="stack">FastAPI · SQLAlchemy · PostgreSQL · React + TypeScript · Vitest</p>
           <div class="foot"><span class="metric"><b>121</b> tests · <b>191</b> commits · live</span><span class="links"><button class="btn sm primary" data-play="yt" data-yt="l2lPWKitNJ0" data-title="DRIFT, 8-minute pitch">▶ Pitch</button><a class="btn sm" href="https://frontend-dusky-omega-11.vercel.app" target="_blank" rel="noopener">Live</a><a class="btn sm" href="https://github.com/airasalish/drift" target="_blank" rel="noopener">Code</a></span></div>
         </div>
       </article>
@@ -1193,7 +1208,7 @@
           <span class="eyebrow">Xeno internship challenge · 2026</span>
           <h3>AIRA</h3>
           <p>A non-technical person types one sentence; AIRA does the rest of a marketing workflow in under 30 seconds. Built for people who'd never touch a script.</p>
-          <p class="stack">Next.js · Llama 3.3 on Groq · Node</p>
+          <p class="stack">Next.js · TypeScript · Llama 3.3 via Groq · separate Node delivery service</p>
           <div class="foot"><span class="metric">Live and usable today</span><span class="links"><button class="btn sm primary" data-play="mp4" data-src-full="vid/aira-full.mp4" data-title="AIRA, 5-minute walkthrough">▶ Demo</button><a class="btn sm" href="https://aira-ecru.vercel.app" target="_blank" rel="noopener">Live</a></span></div>
         </div>
       </article>
@@ -1204,6 +1219,39 @@
       <span class="gh-t"><b>See everything on GitHub</b><small>github.com/airasalish</small></span>
       <span class="gh-go">↗</span>
     </a>
+  </section>
+
+  <section class="block" id="focus">
+    <div class="head"><div><span class="kicker">Technical focus</span><h2>Used, learning, next</h2></div><p>Kept honest: what I've shipped with, what I'm learning, and what I'd build next.</p></div>
+    <div class="focus">
+      <div class="tier">
+        <h3>Used in shipped work</h3>
+        <ul>
+          <li><b>Python, FastAPI, React, TypeScript, Next.js</b>, deployed on Vercel and AWS</li>
+          <li><b>LLM APIs with structured JSON output</b>, validated and retried (WARRANT, Orchestrate)</li>
+          <li><b>Vision models on real images</b>: Gemini for damage photos, Qwen-VL for posters</li>
+          <li><b>Workflow automation</b> with Python and n8n across 50+ workflows</li>
+          <li><b>Generative video</b> with Runway, plus a prompt system for character consistency</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Learning now</h3>
+        <ul>
+          <li>ComfyUI and Stable Diffusion, with ControlNet and IP-Adapter for keeping a form while restyling it</li>
+          <li>CLIP image embeddings for similarity and retrieval</li>
+          <li>Blender's Python API for scripted renders</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Next experiments</h3>
+        <ul>
+          <li><b>Reference finder:</b> search a design team's image library by description, using CLIP and FAISS</li>
+          <li><b>CMF variant renderer:</b> one 3D model rendered in many colour and finish options with a Blender script</li>
+          <li><b>THROUGHLINE scoring:</b> flag off-brand concepts by image similarity</li>
+        </ul>
+        <p class="tier-note">Ideas only, not built yet.</p>
+      </div>
+    </div>
   </section>
 
   <section class="block" id="certifications">
