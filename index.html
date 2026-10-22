@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316161a'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='20' text-anchor='middle' fill='%23f7f6f3'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f7f6f3; --surface: #ffffff; --ink: #16161a; --text: #3d3d45; --muted: #75757f;
@@ -931,6 +931,22 @@
   .job .team .me { top: 9%; }
   .job .lg:not(.acm):not(:has(img)) { font-family: var(--serif); font-size: 24px; }
   @media (max-width: 600px) { .chips a:nth-child(n+4) { display: none; } }
+
+  /* ===== readable type ===== */
+  :root { --serif: 'Plus Jakarta Sans', system-ui, sans-serif; --sans: 'Atkinson Hyperlegible', system-ui, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace; }
+  body { font-family: var(--sans); font-size: 17px; line-height: 1.65; }
+  h1, h2, h3, .head h2, .proj h3, .job h3, .round h3, .cert h3, .step h3, .gen h3, .gen-side h3, .range h3, .contact h2, .stats b, .brand, .hero .role { font-family: var(--serif) !important; }
+  .hero h1 { font-weight: 800; letter-spacing: -0.045em; line-height: .95; font-size: clamp(54px, 7.4vw, 96px); }
+  .hero h1 em { font-style: normal; font-weight: 800; }
+  .hero .role { font-weight: 600; letter-spacing: -0.02em; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; }
+  .hero .role em { font-style: italic; font-weight: 700; }
+  .head h2 { font-weight: 700; letter-spacing: -0.035em; font-size: clamp(32px, 4vw, 50px); line-height: 1.05; }
+  .stats b { font-weight: 700; letter-spacing: -0.04em; }
+  .proj h3, .job h3, .step h3, .cert h3, .round h3, .gen h3, .gen-side h3, .range h3 { font-weight: 700; letter-spacing: -0.02em; }
+  .proj h3 { font-size: 26px; } .job h3 { font-size: 21px; } .step h3 { font-size: 22px; } .cert h3, .certs.tiles .cert h3 { font-size: 17px; }
+  .contact h2 { font-weight: 800; letter-spacing: -0.04em; }
+  .brand { font-weight: 700; letter-spacing: -0.02em; font-size: 18px; }
+  .tldr li, .step p, .proj p, .job .one, .gen-side p { line-height: 1.6; }
 </style>
 </head>
 <body>
