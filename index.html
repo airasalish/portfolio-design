@@ -955,6 +955,11 @@
   .proj .shot.vid-yt:hover img { transform: scale(1.02); }
   .proj .shot.vid-yt .play { position: absolute; left: 12px; bottom: 12px; }
   @media (max-width: 860px) { .proj.wide { grid-template-columns: 1fr; } .proj.wide .shot { aspect-ratio: 16 / 9; } }
+
+  .proj.wide .body { padding: 26px 28px !important; }
+  .proj .shot.vid-yt .play { display: inline-flex; align-items: center; gap: 8px; color: #fff; background: rgba(0,0,0,.8); font-size: 13px; font-weight: 600; padding: 6px 12px 6px 6px; border-radius: 6px; z-index: 2; }
+  .proj .shot.vid-yt .play i { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-style: normal; font-size: 10px; }
+  .proj.wide .shot img { object-position: 0 0; }
 </style>
 </head>
 <body>
