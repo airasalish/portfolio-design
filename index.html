@@ -891,6 +891,23 @@
   .gen-media video { width: 100%; height: 100%; display: block; background: #0b0910; }
   @media (prefers-reduced-motion: reduce) { .verse.on .c-c, .verse.on .c-k, .verse.hit .frame, .verse.hit .c-m, .verse.hit .bars i { animation: none !important; } }
   @media (max-width: 980px) { .verse .bubble { left: 8px; } .verse .sfx { right: 8px; } }
+
+  /* ---- refined hover moment (overrides the earlier, louder version) ---- */
+  .verse.on .frame { box-shadow: 5px 5px 0 #ff1f4b, -4px -4px 0 #19e3ff !important; transform: none !important; }
+  .verse .frame { transition: box-shadow .18s steps(2) !important; }
+  .verse .c-m { transition: opacity .12s steps(2); }
+  .verse .dots { background-image: radial-gradient(circle, rgba(22,12,40,.55) 1px, transparent 1.4px) !important; background-size: 5px 5px !important;
+    -webkit-mask: linear-gradient(135deg, transparent 55%, #000 100%); mask: linear-gradient(135deg, transparent 55%, #000 100%); }
+  .verse.on .dots { opacity: .7 !important; }
+  .verse .mode { position: absolute; right: 10px; top: 10px; z-index: 3; font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: #fff; background: rgba(12,8,18,.72); padding: 4px 8px; opacity: 0; transition: opacity .15s steps(2); }
+  .verse.on .mode { opacity: 1; }
+  .verse.hit .frame { animation: vshake2 .3s steps(4) !important; }
+  .verse.hit .c-m { animation: vslice .3s steps(4) !important; }
+  @keyframes vshake2 { 0%{transform:none} 33%{transform:translate(-3px,1px)} 66%{transform:translate(3px,-1px)} 100%{transform:none} }
+  body::before { display: none; }
+  body.verse-on .hero h1 { text-shadow: 1.5px 0 0 rgba(255,31,75,.8), -1.5px 0 0 rgba(25,227,255,.8) !important; }
+  body.verse-on .hero .role em { color: inherit; }
 </style>
 </head>
 <body>
@@ -946,19 +963,12 @@
     </div>
     <div class="portrait">
       <div class="verse" id="verse">
-        <svg class="splat" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 18c10 22 30 6 38 24s28 6 26 30-22 22-8 40 10 34-14 34-18 24-40 16-30 14-38-8-34-10-26-32 4-26-8-46-24-22-2-40 26 4 36-14 20-30 32-14z"/><circle cx="174" cy="40" r="7"/><circle cx="22" cy="150" r="9"/><circle cx="186" cy="150" r="4"/><circle cx="36" cy="30" r="4"/></svg>
         <div class="frame">
           <img class="real" src="img/aira.jpg?v=6" alt="Portrait of Aira K. Salish" width="800" height="1000">
-          <img class="comic c-m" src="img/aira-comic.jpg?v=2" alt="" aria-hidden="true">
-          <img class="comic c-c" src="img/aira-comic.jpg?v=2" alt="" aria-hidden="true">
-          <img class="comic c-k" src="img/aira-comic.jpg?v=2" alt="" aria-hidden="true">
+          <img class="comic c-m" src="img/aira-comic.jpg?v=3" alt="" aria-hidden="true">
           <span class="dots" aria-hidden="true"></span>
-          <span class="scan" aria-hidden="true"></span>
-          <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="mode" aria-hidden="true">comic&nbsp;mode</span>
         </div>
-        <span class="bubble" aria-hidden="true">hey, it's me!</span>
-        <span class="sfx" aria-hidden="true">POP!</span>
-        <span class="tag" aria-hidden="true">EARTH-2027</span>
       </div>
       <p class="caption"><a href="#certifications">AWS Certified AI Practitioner</a><a href="#certifications">Red Hat RH294 · SAP Certified</a></p>
     </div>
