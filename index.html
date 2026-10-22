@@ -947,6 +947,14 @@
   .contact h2 { font-weight: 800; letter-spacing: -0.04em; }
   .brand { font-weight: 700; letter-spacing: -0.02em; font-size: 18px; }
   .tldr li, .step p, .proj p, .job .one, .gen-side p { line-height: 1.6; }
+
+  .proj.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 1fr; }
+  .proj.wide .shot { aspect-ratio: auto; min-height: 100%; border-bottom: 0; }
+  .proj .shot.vid-yt { position: relative; display: block; width: 100%; padding: 0; border: 0; cursor: pointer; background: #000; overflow: hidden; }
+  .proj .shot.vid-yt img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .5s; }
+  .proj .shot.vid-yt:hover img { transform: scale(1.02); }
+  .proj .shot.vid-yt .play { position: absolute; left: 12px; bottom: 12px; }
+  @media (max-width: 860px) { .proj.wide { grid-template-columns: 1fr; } .proj.wide .shot { aspect-ratio: 16 / 9; } }
 </style>
 </head>
 <body>
@@ -1142,6 +1150,19 @@
           <p>AI image tools break a design language on every output. THROUGHLINE turns reference images and written rules (proportion, stance, form, CMF) into a spec that goes into every generation, then flags which rule a concept broke.</p>
           <p class="stack">Python · FastAPI · generative image APIs</p>
           <div class="foot"><span class="metric">Early build, shared honestly: what works and what still fails</span></div>
+        </div>
+      </article>
+      <article class="proj wide" id="p-receipts">
+        <button class="shot vid-yt" data-play="yt" data-yt="feeWyb4Sn9A" data-title="Receipts, SerpApi India Hackathon 2026" aria-label="Play the Receipts demo video">
+          <img class="still" src="img/receipts.jpg" alt="Receipts home page: Did that YouTube stock tip actually work?" loading="lazy">
+          <span class="play"><i>▶</i>Watch the demo</span>
+        </button>
+        <div class="body">
+          <span class="eyebrow">SerpApi India Hackathon · 2026</span>
+          <h3>Receipts</h3>
+          <p>Finance YouTubers tell millions of people which stocks to buy, and nobody keeps score. Receipts finds each tip in the creator's own words, at the exact second, then checks what the stock did next against the market.</p>
+          <p class="stack">Six SerpApi engines · YouTube transcripts in Hindi &amp; English · Google Finance</p>
+          <div class="foot"><span class="metric"><b>42</b> tips audited · <b>6</b> creators · validated on a real SEBI case</span><span class="links"><button class="btn sm primary" data-play="yt" data-yt="feeWyb4Sn9A" data-title="Receipts, SerpApi India Hackathon 2026">▶ Demo</button><a class="btn sm" href="https://receipts-india.vercel.app/receipts" target="_blank" rel="noopener">Live</a><a class="btn sm" href="https://github.com/airasalish/receipts" target="_blank" rel="noopener">Code</a></span></div>
         </div>
       </article>
       <article class="proj" id="p-drift">
