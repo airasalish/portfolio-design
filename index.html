@@ -948,18 +948,17 @@
   .brand { font-weight: 700; letter-spacing: -0.02em; font-size: 18px; }
   .tldr li, .step p, .proj p, .job .one, .gen-side p { line-height: 1.6; }
 
-  .proj.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 1fr; }
-  .proj.wide .shot { aspect-ratio: auto; min-height: 100%; border-bottom: 0; }
   .proj .shot.vid-yt { position: relative; display: block; width: 100%; padding: 0; border: 0; cursor: pointer; background: #000; overflow: hidden; }
   .proj .shot.vid-yt img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .5s; }
   .proj .shot.vid-yt:hover img { transform: scale(1.02); }
   .proj .shot.vid-yt .play { position: absolute; left: 12px; bottom: 12px; }
-  @media (max-width: 860px) { .proj.wide { grid-template-columns: 1fr; } .proj.wide .shot { aspect-ratio: 16 / 9; } }
 
-  .proj.wide .body { padding: 26px 28px !important; }
   .proj .shot.vid-yt .play { display: inline-flex; align-items: center; gap: 8px; color: #fff; background: rgba(0,0,0,.8); font-size: 13px; font-weight: 600; padding: 6px 12px 6px 6px; border-radius: 6px; z-index: 2; }
   .proj .shot.vid-yt .play i { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-style: normal; font-size: 10px; }
-  .proj.wide .shot img { object-position: 0 0; }
+  .proj .shot.vid-yt { aspect-ratio: 16 / 10; }
+  #p-receipts .shot img { object-fit: cover; object-position: center; }
+  .also { margin-top: 22px; font-size: 15.5px; color: var(--text); }
+  .also b { color: var(--ink); }
 </style>
 </head>
 <body>
@@ -1157,17 +1156,17 @@
           <div class="foot"><span class="metric">Early build, shared honestly: what works and what still fails</span></div>
         </div>
       </article>
-      <article class="proj wide" id="p-receipts">
+      <article class="proj" id="p-receipts">
         <button class="shot vid-yt" data-play="yt" data-yt="feeWyb4Sn9A" data-title="Receipts, SerpApi India Hackathon 2026" aria-label="Play the Receipts demo video">
           <img class="still" src="img/receipts.jpg" alt="Receipts home page: Did that YouTube stock tip actually work?" loading="lazy">
-          <span class="play"><i>▶</i>Watch the demo</span>
+          <span class="play"><i>▶</i>Demo video</span>
         </button>
         <div class="body">
           <span class="eyebrow">SerpApi India Hackathon · 2026</span>
           <h3>Receipts</h3>
-          <p>Finance YouTubers tell millions of people which stocks to buy, and nobody keeps score. Receipts finds each tip in the creator's own words, at the exact second, then checks what the stock did next against the market.</p>
-          <p class="stack">Six SerpApi engines · YouTube transcripts in Hindi &amp; English · Google Finance</p>
-          <div class="foot"><span class="metric"><b>42</b> tips audited · <b>6</b> creators · validated on a real SEBI case</span><span class="links"><button class="btn sm primary" data-play="yt" data-yt="feeWyb4Sn9A" data-title="Receipts, SerpApi India Hackathon 2026">▶ Demo</button><a class="btn sm" href="https://receipts-india.vercel.app/receipts" target="_blank" rel="noopener">Live</a><a class="btn sm" href="https://github.com/airasalish/receipts" target="_blank" rel="noopener">Code</a></span></div>
+          <p>Finance YouTubers tell millions which stocks to buy, and nobody keeps score. Receipts finds each tip at the exact second it was said, then checks how the stock really did.</p>
+          <p class="stack">SerpApi · YouTube transcripts · Google Finance</p>
+          <div class="foot"><span class="metric"><b>42</b> tips audited · live</span><span class="links"><button class="btn sm primary" data-play="yt" data-yt="feeWyb4Sn9A" data-title="Receipts, SerpApi India Hackathon 2026">▶ Demo</button><a class="btn sm" href="https://receipts-india.vercel.app/receipts" target="_blank" rel="noopener">Live</a><a class="btn sm" href="https://github.com/airasalish/receipts" target="_blank" rel="noopener">Code</a></span></div>
         </div>
       </article>
       <article class="proj" id="p-drift">
@@ -1198,17 +1197,8 @@
           <div class="foot"><span class="metric">Live and usable today</span><span class="links"><button class="btn sm primary" data-play="mp4" data-src-full="vid/aira-full.mp4" data-title="AIRA, 5-minute walkthrough">▶ Demo</button><a class="btn sm" href="https://aira-ecru.vercel.app" target="_blank" rel="noopener">Live</a></span></div>
         </div>
       </article>
-      <article class="proj" id="p-campus">
-        <div class="shot"><img src="img/campusweb.jpg" alt="CampusWeb sign-in screen" loading="lazy"></div>
-        <div class="body">
-          <span class="eyebrow">Open source · 2024</span>
-          <h3>CampusWeb</h3>
-          <p>Shipped features into a live SRM student app, working in someone else's codebase under peer review and the maintainers' guidance.</p>
-          <p class="stack">Web app · open source · code review</p>
-          <div class="foot"><span class="metric"><b>1,000+</b> daily users</span><span class="links"></span></div>
-        </div>
-      </article>
     </div>
+    <p class="also">Also: shipped features into <b>CampusWeb</b>, a live SRM student app with 1,000+ daily users, through open-source code review.</p>
     <a class="more-gh" href="https://github.com/airasalish?tab=repositories" target="_blank" rel="noopener">
       <span class="gh-ic"></span>
       <span class="gh-t"><b>See everything on GitHub</b><small>github.com/airasalish</small></span>
