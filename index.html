@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aira K. Salish | AI Generalist, Design</title>
-<meta name="description" content="Aira K. Salish: I find the friction in creative workflows and build the AI tools that remove it. Generative video at 21M views, automation across 50+ workflows.">
-<meta property="og:title" content="Aira K. Salish | AI Generalist, Design">
-<meta property="og:description" content="I design for the designers: AI tools and workflows that remove friction.">
+<title>Aira K. Salish | AI tools for creative work</title>
+<meta name="description" content="Aira K. Salish builds generative visuals and the small AI tools that take repetitive work out of creative teams. 111M+ views on AI-made shorts, automation across 50+ workflows.">
+<meta property="og:title" content="Aira K. Salish | AI tools for creative work">
+<meta property="og:description" content="Generative visuals and the small tools that take the repetitive work out of creative teams.">
 <meta property="og:image" content="https://aira-salish-design.vercel.app/img/og.jpg">
 <meta property="og:url" content="https://aira-salish-design.vercel.app">
 <meta name="twitter:card" content="summary_large_image">
@@ -908,6 +908,24 @@
   body::before { display: none; }
   body.verse-on .hero h1 { text-shadow: 1.5px 0 0 rgba(255,31,75,.8), -1.5px 0 0 rgba(25,227,255,.8) !important; }
   body.verse-on .hero .role em { color: inherit; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
+  .step { padding: 22px 22px 22px 0; display: flex; flex-direction: column; }
+  .step + .step { border-left: 1px solid var(--line); padding-left: 22px; }
+  .step .n { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+  .step h3 { font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.1; margin-top: 10px; }
+  .step p { font-size: 15px; margin-top: 10px; flex: 1; }
+  .step .proof { font-family: var(--mono); font-size: 12px; color: var(--ink); margin-top: 16px; }
+  @media (max-width: 980px) { .steps { grid-template-columns: 1fr 1fr; } .step:nth-child(3) { border-left: 0; padding-left: 0; } .step:nth-child(n+3) { border-top: 1px solid var(--line); } }
+  @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } .step + .step { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); } }
+
+  .team { margin: 32px 0 0; }
+  .team-btn { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .team-btn img { width: 100%; height: auto; display: block; border-radius: 2px; }
+  .team .me { position: absolute; left: 6.6%; top: 9%; transform: translate(-50%, -100%); font-family: var(--mono); font-size: 11px; color: var(--ink); background: var(--bg); padding: 2px 7px; border-radius: 2px; opacity: .92; }
+  .team .me::after { content: ''; position: absolute; left: 50%; top: 100%; transform: translateX(-50%); border: 4px solid transparent; border-top-color: var(--bg); }
+  .team figcaption { margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .team { max-width: 760px; }
 </style>
 </head>
 <body>
@@ -917,7 +935,7 @@
   <div class="wrap">
     <a class="brand" href="#">Aira K. Salish</a>
     <ul class="menu" id="menu">
-      <li><a href="#fit">The role</a></li>
+      <li><a href="#fit">How I work</a></li>
       <li><a href="#generative">Generative</a></li>
       <li><a href="#friction">Work</a></li>
       <li><a href="#projects">Tools</a></li>
@@ -938,7 +956,7 @@
 
 <nav class="rail" id="rail" aria-label="Sections">
   <a href="#abc">Highlights</a>
-  <a href="#fit">The role</a>
+  <a href="#fit">How I work</a>
   <a href="#generative">Generative</a>
   <a href="#friction">Work</a>
   <a href="#projects">Tools</a>
@@ -950,10 +968,10 @@
 <main class="wrap">
   <section class="hero">
     <div>
-      <p class="avail">Available now · open to relocating to Bangalore for 6 months</p>
+      <p class="avail">Open to internships and 2027 roles · happy to relocate</p>
       <h1>Aira <em>K.</em> Salish</h1>
-      <p class="role">I design <em>for the designers.</em></p>
-      <p class="intro">I find the slow, repetitive parts of creative work and build the AI tools that remove them. Final-year AI &amp; ML at SRM.</p>
+      <p class="role">I take the <em>busywork</em> out of creative work.</p>
+      <p class="intro">Generative visuals, and the small AI tools that make a creative team faster. Final-year AI &amp; ML at SRM, Chennai.</p>
       <div class="cta">
         <button class="btn primary" data-compose="call">Email to schedule a call</button>
         <a class="btn" href="docs/aira-salish-resume-design.pdf" download="Aira-Salish-Resume.pdf">Download résumé</a>
@@ -997,21 +1015,33 @@
   </section>
 
   <section class="block" id="fit">
-    <div class="head"><div><span class="kicker">The role, mapped</span><h2>What the job asks. What I've done.</h2></div><p>Each line of the AI Generalist, Design brief, next to where I've already done it.</p></div>
-    <div class="fit">
-      <div class="fit-row"><span class="ask">Find the friction</span><p>At BabyBillion the complaint was "output is slow". I watched how the work really happened and found the cause: small mechanical steps repeated for every piece.</p></div>
-      <div class="fit-row"><span class="ask">Explore &amp; test AI tools</span><p>Shipped work with Runway and other generative video tools, and tested AI output against real use with graded test sets at The Spotted App.</p></div>
-      <div class="fit-row"><span class="ask">Build simple tools</span><p>Python, JavaScript and n8n. Building THROUGHLINE, a tool that keeps a design language consistent across every AI generation.</p></div>
-      <div class="fit-row"><span class="ask">Integrate into workflows</span><p>Automation across 50+ live production workflows, with an organised asset pipeline behind it.</p></div>
-      <div class="fit-row"><span class="ask">Document it</span><p>Wrote the playbook a whole team adopted, and the guides that let colleagues run dashboards without me.</p></div>
-      <div class="fit-row"><span class="ask">Use data</span><p>Made reporting 30% faster and built self-serve dashboards to see how the work actually gets done.</p></div>
-      <div class="fit-row"><span class="ask">Deploy it</span><p>Web apps, prototypes and internal tools live on Vercel and AWS, so people can actually open them.</p></div>
-      <div class="fit-row"><span class="ask">Present findings</span><p>Reported findings directly to founders, and defended a design in a live 30-minute technical review.</p></div>
+    <div class="head"><div><span class="kicker">How I work</span><h2>Watch, test, build, ship</h2></div><p>The same four steps, whether it's a video pipeline or an internal tool.</p></div>
+    <div class="steps">
+      <article class="step">
+        <span class="n">01</span><h3>Watch the work</h3>
+        <p>People describe the problem; the work shows it. At BabyBillion "output is slow" turned out to be small steps repeated for every single video.</p>
+        <span class="proof">→ found the real bottleneck</span>
+      </article>
+      <article class="step">
+        <span class="n">02</span><h3>Test the tools</h3>
+        <p>I try the new AI tools, then test them against real use, not demos. Graded test sets, failure cases, a clear bar to pass.</p>
+        <span class="proof">→ 35% fewer wrong answers</span>
+      </article>
+      <article class="step">
+        <span class="n">03</span><h3>Build the small thing</h3>
+        <p>The smallest tool that removes the step: a Python script, an n8n flow, a prompt system that keeps a look consistent.</p>
+        <span class="proof">→ 50+ workflows automated</span>
+      </article>
+      <article class="step">
+        <span class="n">04</span><h3>Ship it, write it down</h3>
+        <p>Deployed so people can open it, with a guide they can follow without me. A tool nobody uses isn't finished.</p>
+        <span class="proof">→ playbook the team adopted</span>
+      </article>
     </div>
   </section>
 
   <section class="block" id="generative">
-    <div class="head"><div><span class="kicker">Generative work</span><h2>2D sketch → 3D character → 111M views</h2></div><p>The hard part of generative work is keeping a look consistent. Same problem as a design language.</p></div>
+    <div class="head"><div><span class="kicker">Generative work</span><h2>2D sketch → 3D character → 111M views</h2></div><p>The hard part of generative work is keeping a look consistent from one piece to the next.</p></div>
     <div class="gen">
       <div class="gen-text">
         <h3>BabyBillion · kids' content, 1.5B+ monthly views</h3>
@@ -1069,6 +1099,13 @@
         </div>
       </article>
     </div>
+    <figure class="team">
+      <button class="team-btn" data-open="img/bb-team-me.jpg" data-cap="With the BabyBillion team, Bengaluru, 2025 (far left, white cardigan)">
+        <img src="img/bb-team-me.jpg" alt="Aira with the BabyBillion team in Bengaluru" loading="lazy">
+        <span class="me">me</span>
+      </button>
+      <figcaption>With the BabyBillion team, Bengaluru, 2025</figcaption>
+    </figure>
   </section>
 
   <section class="block" id="projects">
@@ -1195,7 +1232,7 @@
   <section class="contact" id="contact">
     <div>
       <h2>Let's talk.</h2>
-      <p>Available immediately, full-time for 6 months in Bangalore.</p>
+      <p>Open to internships and 2027 roles. One click opens a ready-to-send email.</p>
       <div class="c-row">
         <button class="c-mini" data-copy="airasalish@gmail.com">Copy email</button>
         <button class="c-mini" data-vcard>Save contact</button>
@@ -1211,7 +1248,7 @@
     </div>
   </section>
 
-  <footer><span>© 2026 Aira K. Salish</span><span>Kannur → Chennai → Bangalore?</span></footer>
+  <footer><span>© 2026 Aira K. Salish</span><span>Kannur → Chennai</span></footer>
 </main>
 
 <dialog id="compose" aria-labelledby="cTitle">
@@ -1383,12 +1420,12 @@ const templates = {
       { k: 'to', label: 'Colleague\'s email (optional)', type: 'email', full: true },
       { k: 'name', label: 'Your name', full: true }
     ],
-    subject: f => `Candidate for AI Generalist, Design: Aira K. Salish`,
-    body: f => `Hi,\n\nSharing a candidate for our AI roles: Aira K. Salish.\n\n`
+    subject: f => `Candidate worth a look: Aira K. Salish`,
+    body: f => `Hi,\n\nSharing a candidate worth a look: Aira K. Salish.\n\n`
       + `- Built the prompt system behind AI-made shorts at 21M and 20M views\n`
       + `- Automated 50+ production workflows with Python and n8n, cutting 40% of repetitive work\n`
       + `- Deploys what she builds (Vercel, AWS) and writes the guides that get it adopted\n`
-      + `- Available now for 6 months in Bangalore\n\n`
+      + `- Open to internships and 2027 roles, happy to relocate\n\n`
       + `Portfolio: ${SITE}\nRésumé: ${SITE}/docs/aira-salish-resume-design.pdf\nEmail: ${ME}\n\n${f.name || ''}\n`
   },
   hello: {
